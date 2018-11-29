@@ -26,7 +26,7 @@ namespace OutsideProject2
             process.StandardInput.Flush();
             process.StandardInput.Close();
             //process.WaitForExit();
-            Console.WriteLine(process.StandardOutput.ReadToEnd());
+            //Console.WriteLine(process.StandardOutput.ReadToEnd());
             Console.ReadKey();
 
 
