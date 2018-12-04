@@ -58,10 +58,12 @@ namespace OutsideProject2
         {
 
             // ChooseDriverInstance(_browserType);
-           //_driver = new ChromeDriver();
-            var options = new ChromeOptions(); options.AddArguments("incognito", "testFileNameTemplate", "myID_{browser}_{testStatus}");
+            //_driver = new ChromeDriver();
+            var options = new ChromeOptions();
+            options.AddArguments("incognito", "testFileNameTemplate", "myID_{browser}_{testStatus}", "browserstack.local", "true","browser_version", "62.0", "os", "Windows");
             _driver = new RemoteWebDriver(
-               new Uri("http://localhost:4444/wd/hub"), options);
+              new Uri("http://localhost:4444/wd/hub"), options);
+           // new Uri("http://hub-cloud.browserstack.com:80"), options);
 
             _objectContainer.RegisterInstanceAs<IWebDriver>(_driver);
                       

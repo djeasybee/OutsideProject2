@@ -4,5 +4,5 @@
 
 Scenario: Login with Credentials2
 	Given I navigate to Tris
-	When I correct cred
+	When I enter my correct cred
 	Then I am logged in

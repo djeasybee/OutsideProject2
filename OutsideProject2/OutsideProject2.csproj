@@ -70,14 +70,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CMDZalenium.cs" />
-    <Compile Include="Credentials2Steps.cs" />
+    <Compile Include="StepDefinitions\Credentials2Steps.cs" />
     <Compile Include="Hooks.cs" />
     <Compile Include="LoginTrisus.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LoginTrisus.feature</DependentUpon>
     </Compile>
-    <Compile Include="LoginTrisusSteps.cs" />
+    <Compile Include="StepDefinitions\LoginTrisusSteps.cs" />
     <Compile Include="LoginWithCredential2.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -88,7 +88,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoginWithCredential3.feature</DependentUpon>
     </Compile>
-    <Compile Include="LoginWithCredential3Steps.cs" />
+    <Compile Include="StepDefinitions\LoginWithCredential3Steps.cs" />
     <Compile Include="PageObjects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -108,6 +108,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

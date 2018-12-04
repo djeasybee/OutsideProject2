@@ -61,5 +61,15 @@ namespace OutsideProject2
             UserMenu.Click();
             LogoutButton.Click();
         }
+
+        public void Waitfor()
+        {
+
+            WebDriverWait wait = new WebDriverWait(_Driver, TimeSpan.FromSeconds(5));
+            IWebElement element = wait.Until(ExpectedConditions.ElementToBeClickable(By.Id("username")));
+
+            UserMenu.Click();
+            LogoutButton.Click();
+        }
     }
 }
