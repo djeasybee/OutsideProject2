@@ -1,0 +1,153 @@
+[33mcommit 38fce92dddd03a69f32b33f5504bb7fda763722f[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Bayo <pbakin@gmai;l.com>
+Date:   Tue Dec 4 12:18:30 2018 +0000
+
+    updated
+
+[1mdiff --git a/OutsideProject2/CMDZalenium.cs b/OutsideProject2/CMDZalenium.cs[m
+[1mindex e1fc1ba..fb7ec2d 100644[m
+[1m--- a/OutsideProject2/CMDZalenium.cs[m
+[1m+++ b/OutsideProject2/CMDZalenium.cs[m
+[36m@@ -8,29 +8,29 @@[m [mnamespace OutsideProject2[m
+ [m
+     public class CMDZalenium[m
+     {[m
+[31m-       private readonly static string  ZeleniumStartCommand = "docker run --rm -ti --name zalenium -p 4444:4444 -v /var/run/docker.sock:/var/run/docker.sock -v /home/seluser/videos --privileged dosel/zalenium start --desiredContainers 6";[m
+[32m+[m[32m       private readonly static string  ZeleniumStartCommand = "docker run --rm -ti --name zalenium -p 4444:4444 -v /var/run/docker.sock:/var/run/docker.sock -v /home/seluser/videos --privileged dosel/zalenium start --desiredContainers 4";[m
+        private readonly static string ZeleniumStopCommand = "docker stop zalenium";[m
+ [m
+[31m-        [BeforeTestRun][m
+[31m-[m
+[31m-        public static void CMDZale()[m
+[31m-        {[m
+[31m-            Process process = new Process();[m
+[31m-            process.StartInfo.FileName = "cmd.exe";[m
+[31m-            process.StartInfo.CreateNoWindow = true;[m
+[31m-            process.StartInfo.RedirectStandardInput = true;[m
+[31m-            process.StartInfo.RedirectStandardOutput = true;[m
+[31m-            process.StartInfo.UseShellExecute = false;[m
+[31m-            process.Start();[m
+[31m-            process.StandardInput.WriteLine(ZeleniumStartCommand);[m
+[31m-            process.StandardInput.Flush();[m
+[31m-            process.StandardInput.Close();[m
+[31m-            //process.WaitForExit();[m
+[31m-            //Console.WriteLine(process.StandardOutput.ReadToEnd());[m
+[31m-            Console.ReadKey();[m
+[31m-[m
+[31m-[m
+[31m-            }[m
+[32m+[m[32m        //[BeforeTestRun][m
+[32m+[m
+[32m+[m[32m        //public static void CMDZale()[m
+[32m+[m[32m        //{[m
+[32m+[m[32m        //    Process process = new Process();[m
+[32m+[m[32m        //    process.StartInfo.FileName = "cmd.exe";[m
+[32m+[m[32m        //    process.StartInfo.CreateNoWindow = true;[m
+[32m+[m[32m        //    process.StartInfo.RedirectStandardInput = true;[m
+[32m+[m[32m        //    process.StartInfo.RedirectStandardOutput = true;[m
+[32m+[m[32m        //    process.StartInfo.UseShellExecute = false;[m
+[32m+[m[32m        //    process.Start();[m
+[32m+[m[32m        //    process.StandardInput.WriteLine(ZeleniumStartCommand);[m
+[32m+[m[32m        //    process.StandardInput.Flush();[m
+[32m+[m[32m        //    process.StandardInput.Close();[m
+[32m+[m[32m        //    //process.WaitForExit();[m
+[32m+[m[32m        //    //Console.WriteLine(process.StandardOutput.ReadToEnd());[m
+[32m+[m[32m        //    Console.ReadKey();[m
+[32m+[m
+[32m+[m
+[32m+[m[32m        //    }[m
+ [m
+             //[AfterTestRun][m
+             //public static void CMDStopZale()[m
+[1mdiff --git a/OutsideProject2/Hooks.cs b/OutsideProject2/Hooks.cs[m
+[1mindex 233b483..232b706 100644[m
+[1m--- a/OutsideProject2/Hooks.cs[m
+[1m+++ b/OutsideProject2/Hooks.cs[m
+[36m@@ -58,10 +58,12 @@[m [mnamespace OutsideProject2[m
+         {[m
+ [m
+             // ChooseDriverInstance(_browserType);[m
+[31m-           //_driver = new ChromeDriver();[m
+[31m-            var options = new ChromeOptions(); options.AddArguments("incognito", "testFileNameTemplate", "myID_{browser}_{testStatus}");[m
+[32m+[m[32m            //_driver = new ChromeDriver();[m
+[32m+[m[32m            var options = new ChromeOptions();[m
+[32m+[m[32m            options.AddArguments("incognito", "testFileNameTemplate", "myID_{browser}_{testStatus}", "browserstack.local", "true","browser_version", "62.0", "os", "Windows");[m
+             _driver = new RemoteWebDriver([m
+[31m-               new Uri("http://localhost:4444/wd/hub"), options);[m
+[32m+[m[32m              new Uri("http://localhost:4444/wd/hub"), options);[m
+[32m+[m[32m           // new Uri("http://hub-cloud.browserstack.com:80"), options);[m
+ [m
+             _objectContainer.RegisterInstanceAs<IWebDriver>(_driver);[m
+                       [m
+[1mdiff --git a/OutsideProject2/LoginAndOutWithCredential4.feature b/OutsideProject2/LoginAndOutWithCredential4.feature[m
+[1mnew file mode 100644[m
+[1mindex 0000000..d8439cb[m
+[1m--- /dev/null[m
+[1m+++ b/OutsideProject2/LoginAndOutWithCredential4.feature[m
+[36m@@ -0,0 +1,9 @@[m
+[32m+[m[32m﻿Feature: LoginAndOutWithCredential4[m
+[32m+[m	[32mLogin and Logout[m
+[32m+[m
+[32m+[m[32m@mytag[m
+[32m+[m[32mScenario: Login with Credentials4[m
+[32m+[m	[32mGiven I navigate to the Trisus[m
+[32m+[m	[32mWhen I enter correct credentials[m
+[32m+[m	[32mAnd Log Out[m
+[32m+[m	[32mThen I am returned to the Login Page[m
+[1mdiff --git a/OutsideProject2/LoginAndOutWithCredential4.feature.cs b/OutsideProject2/LoginAndOutWithCredential4.feature.cs[m
+[1mnew file mode 100644[m
+[1mindex 0000000..9ebdbd5[m
+[1m--- /dev/null[m
+[1m+++ b/OutsideProject2/LoginAndOutWithCredential4.feature.cs[m
+[36m@@ -0,0 +1,96 @@[m
+[32m+[m[32m﻿// ------------------------------------------------------------------------------[m
+[32m+[m[32m//  <auto-generated>[m
+[32m+[m[32m//      This code was generated by SpecFlow (http://www.specflow.org/).[m
+[32m+[m[32m//      SpecFlow Version:2.4.0.0[m
+[32m+[m[32m//      SpecFlow Generator Version:2.4.0.0[m
+[32m+[m[32m//[m[41m [m
+[32m+[m[32m//      Changes to this file may cause incorrect behavior and will be lost if[m
+[32m+[m[32m//      the code is regenerated.[m
+[32m+[m[32m//  </auto-generated>[m
+[32m+[m[32m// ------------------------------------------------------------------------------[m
+[32m+[m[32m#region Designer generated code[m
+[32m+[m[32m#pragma warning disable[m
+[32m+[m[32mnamespace OutsideProject2[m
+[32m+[m[32m{[m
+[32m+[m[32m    using TechTalk.SpecFlow;[m
+[32m+[m[41m    [m
+[32m+[m[41m    [m
+[32m+[m[32m    [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")][m
+[32m+[m[32m    [System.Runtime.CompilerServices.CompilerGeneratedAttribute()][m
+[32m+[m[32m    [NUnit.Framework.TestFixtureAttribute()][m
+[32m+[m[32m    [NUnit.Framework.DescriptionAttribute("LoginAndOutWithCredential4")][m
+[32m+[m[32m    public partial class LoginAndOutWithCredential4Feature[m
+[32m+[m[32m    {[m
+[32m+[m[41m        [m
+[32m+[m[32m        private TechTalk.SpecFlow.ITestRunner testRunner;[m
+[32m+[m[41m        [m
+[32m+[m[32m#line 1 "LoginAndOutWithCredential4.feature"[m
+[32m+[m[32m#line hidden[m
+[32m+[m[41m        [m
+[32m+[m[32m        [NUnit.Framework.OneTimeSetUpAttribute()][m
+[32m+[m[32m        public virtual void FeatureSetup()[m
+[32m+[m[32m        {[m
+[32m+[m[32m            testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();[m
+[32m+[m[32m            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "LoginAndOutWithCredential4", "\tLogin and Logout", ProgrammingLanguage.CSharp, ((string[])(null)));[m
+[32m+[m[32m            testRunner.OnFeatureStart(featureInfo);[m
+[32m+[m[32m        }[m
+[32m+[m[41m        [m
+[32m+[m[32m        [NUnit.Framework.OneTimeTearDownAttribute()][m
+[32m+[m[32m        public virtual void FeatureTearDown()[m
+[32m+[m[32m        {[m
+[32m+[m[32m            testRunner.OnFeatureEnd();[m
+[32m+[m[32m            testRunner = null;[m
+[32m+[m[32m        }[m
+[32m+[m[41m        [m
+[32m+[m[32m        [NUnit.Framework.SetUpAttribute()][m
+[32m+[m[32m        public virtual void TestInitialize()[m
+[32m+[m[32m        {[m
+[32m+[m[32m        }[m
+[32m+[m[41m        [m
+[32m+[m[32m        [NUnit.Framework.TearDownAttribute()][m
+[32m+[m[32m        public vi
