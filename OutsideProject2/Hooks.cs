@@ -26,14 +26,6 @@ namespace OutsideProject2
         private readonly IObjectContainer _objectContainer;
 
 
-        //private BrowserType _browserType;
-        //public Hooks(BrowserType browser)
-        //{
-        //    _browserType = browser;
-        //}
-
-
-
         private IWebDriver _driver;
         
          public Hooks(IObjectContainer objectContainer)
