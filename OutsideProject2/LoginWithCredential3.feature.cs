@@ -86,24 +86,6 @@ this.ScenarioInitialize(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Login Into Trisus 4")]
-        public virtual void LoginIntoTrisus4()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login Into Trisus 4", null, ((string[])(null)));
-#line 9
- this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 10
- testRunner.Given("I am on Trisus Website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 11
- testRunner.When("I enter my credential", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 12
- testRunner.Then("I am logged into trisus", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
     }
 }
 #pragma warning restore
